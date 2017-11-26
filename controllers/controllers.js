@@ -45,7 +45,7 @@ router.post("/save", function(req, res){
 });
 
 
-router.get("/deleteArticle/:id", function(req, res) {
+router.get("/deletearticle/:id", function(req, res) {
   console.log("ID is getting read for delete" + req.params.id);
   console.log("Able to activate delete function.");
   Article.findOneAndRemove({"_id": req.params.id}, function (err, offer) {
@@ -59,7 +59,7 @@ router.get("/deleteArticle/:id", function(req, res) {
   });
 });
 
-router.get("/savedArticles", function(req, res) {
+router.get("/savedarticles", function(req, res) {
 	Article.find({}, function(error, doc) {
     if (error) {
       console.log(error);

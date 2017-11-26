@@ -50,7 +50,7 @@ function saveArticle(button, itemId) {
 
 function deleteArticle(id){
   $.ajax({
-    url: '/deleteArticle/'+id,
+    url: '/deletearticle/'+id,
     method: "GET"
   }).done((res)=>{
     let div = document.getElementById(id);
