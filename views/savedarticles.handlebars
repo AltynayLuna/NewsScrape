@@ -1,0 +1,73 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">News Scraper App</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+	        <li><a href="/savedarticles">Saved Articles</a></li>
+	        <li><button type="button" onclick="getOnionData(this)" class="btn btn-default middle">SCRAPE NEW ARTICLES!</button></li>
+	      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main container -->
+<div class="container">
+  
+  <div class="row">
+    <div class="col-md-12" id="results">
+      {{#each articles}}
+        <div class="panel panel-primary" id='{{this.id}}'>
+          <div class="panel-heading row">
+            <div class="col-xs-6">
+              <h3 class="panel-title pull-left">{{this.title}}</h3>
+            </div>
+            <div class="col-xs-3">
+              <button id="modalbutton" type="submit" class="btn btn-default pull-right" data-toggle="modal" data-id={{this.id}} data-target="#myModal">ARTICLE NOTES</button>
+            </div>
+            <div class="col-xs-3">
+                <button type="submit" class="btn btn-default pull-right" onclick="deleteArticle('{{this.id}}')">DELETE FROM SAVED</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12>">
+              <div class="panel-body">
+                <p class=" panel-item-container">
+					<a href={{this.link}} target="_blank">{{this.headline}}</a><br />
+					{{this.summary}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Notes for Article <span id="articleID"></span></h4>
+      </div>
+      <div class="modal-body">
+        <div id="notes"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
