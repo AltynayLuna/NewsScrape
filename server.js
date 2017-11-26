@@ -9,8 +9,9 @@ var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
 mongoose.Promise = Promise;
 
-var PORT = 3000;
-
+var PORT = process.env.PORT || 3000;
+console.log("Test");
+console.log(process.env.PORT);
 var app = express();
 
 var data;
@@ -36,5 +37,5 @@ app.use("/", routes);
 
 // Start the server
 app.listen(PORT, function() {
-  console.log("App running on port " + PORT + "!");
+  console.log("App is listening on port " + PORT + "!");
 });
