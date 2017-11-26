@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
 mongoose.Promise = Promise;
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGOLAB_ONYX_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.connect(MONGODB_URI, {
   useMongoClient: true
 });
