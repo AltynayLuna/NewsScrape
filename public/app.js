@@ -33,13 +33,17 @@ function renderHeadlines(){
 function saveArticle(button, itemId) {
   $(button).text("Saving...");
   let item = articles[itemId];
+  let messagePosted = document.getElementById(elementId);
   $.post('/save', item, 
     function(returnedData){
       let elementId = `msg-${itemId}`;
-      let messagePosted = document.getElementById(elementId);
       messagePosted.innerHTML = "<span class='green'>Article Saved!<span>";
       $(button).text("Save");
       $(button).attr("disabled", "disabled");
+  }).fail((msg)=>{
+      $(button).text("Article could not be saved");
+      $(button).attr("disabled", "disabled");
+      console.log(msg);
   });
 };
 
