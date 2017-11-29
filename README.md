@@ -1,1 +1,1 @@
-# NewsScrape
+A web app that lets users view the latest news scraped from The Onion. It also lets the users save their favorite articles and delete them. Technologies used: HTML, CSS, Bootstrap, JavaScript, node js, MongoDB, Mongoose, Cheerio, Express, Express-Handlebars. 
